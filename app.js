@@ -537,6 +537,7 @@ const removableListing = document.querySelector("ul :nth-child(4)")
 console.log("Let's get rid of the out-of-place curling thing.")
 removableListing.remove()
 
+console.log("")
 
 
 
