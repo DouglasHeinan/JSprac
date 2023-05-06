@@ -530,6 +530,12 @@ newThing.append("Look, a new thing!")
 list = document.querySelector('ul')
 list.insertAdjacentElement('beforeend', newThing)
 
+console.log("")
+console.log("remove")
+console.log("removing a specific child...")
+const removableListing = document.querySelector("ul :nth-child(4)")
+console.log("Let's get rid of the out-of-place curling thing.")
+removableListing.remove()
 
 
 
