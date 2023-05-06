@@ -5,3 +5,8 @@
 .border {
     border: 3px solid green;
 }
+
+.small {
+    width: 15em;
+    height: 15em;
+}
