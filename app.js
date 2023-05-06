@@ -510,6 +510,7 @@ allArrays = [...numArray, ...otherArray, 7]
 console.log(allArrays)
 console.log("And we can spread properties from one object into a new one.")
 console.log("If both objects share a key that has different values, the one entered last will override the rest.")
+//More append child here
 
 
 
