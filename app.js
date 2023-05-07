@@ -540,6 +540,32 @@ removableListing.remove()
 
 console.log("")
 console.log("LISTENERS")
+//This betterButton method is still not ideal
+const betterButton= document.querySelector(".betterButton")
+betterButton.onclick = function() {
+    console.log("Better Button Clicked.")
+}
+//This bestButton way is the one...
+const bestButton = document.querySelector(".bestButton")
+bestButton.addEventListener('click', function() {
+    console.log("Best Button Clicked.")
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
