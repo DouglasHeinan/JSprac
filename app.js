@@ -513,20 +513,21 @@ console.log("If both objects share a key that has different values, the one ente
 
 console.log("")
 console.log("Creating and appending:")
+const listDiv = document.querySelector(".firstDiv")
 const loonDog = document.createElement('img')
 loonDog.src = 'https://cdn.nba.com/manage/2022/07/kevon-looney-cropped-1568x882.jpg'
-document.body.appendChild(loonDog)
+listDiv.insertAdjacentElement("beforeend", loonDog)
 console.log("let's make it a little smaller...")
 loonDog.classList.add('small')
 const loonTitle = document.createElement('h3')
 loonTitle.innerText = "LOONEY!"
-document.body.appendChild(loonTitle)
+listDiv.insertAdjacentElement("beforeend", loonTitle)
 console.log("Instead of appendChild, I could just use append.")
 console.log("This lets me append plain text or multiple items at once.")
 loonTitle.append(" He's good.", " At Basketball.")
 console.log("We can also add adjacent elements.")
 const newThing = document.createElement('li')
-newThing.append("Look, a new thing!")
+newThing.append("Look, a Looney thing!")
 list = document.querySelector('ul')
 list.insertAdjacentElement('beforeend', newThing)
 
@@ -538,6 +539,7 @@ console.log("Let's get rid of the out-of-place curling thing.")
 removableListing.remove()
 
 console.log("")
+console.log("LISTENERS")
 
 
 

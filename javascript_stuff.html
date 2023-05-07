@@ -11,13 +11,17 @@
         <h2 class="">A smaller header...</h2>
         <p class="border">I have a border</p>
         <h4>A list of things.</h4>
-        <ul>
-            <li>This is thing one.</li>
-            <li>This is thing two.</li>
-            <li>This is thing three.</li>
-            <li class="curling">This is a curling thing.</li>
-        </ul>
-
+        <div class="firstDiv">
+            <ul>
+                <li>This is thing one.</li>
+                <li>This is thing two.</li>
+                <li>This is thing three.</li>
+                <li class="curling">This is a curling thing.</li>
+            </ul>
+        </div>
+        <hr>
+<!--        Inline event handler. Bad. Don't do this.-->
+        <button onclick="console.log('clicked')">Click me, please.</button>
 
 
         <script src="app.js"></script>
