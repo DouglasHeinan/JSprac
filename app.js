@@ -539,7 +539,10 @@ console.log("Let's get rid of the out-of-place curling thing.")
 removableListing.remove()
 
 console.log("")
-console.log("LISTENERS")
+console.log("All further sections are elaborated on in the comments of the js file.")
+
+
+//LISTENERS:
 //This betterButton method is still not ideal
 const betterButton= document.querySelector(".betterButton")
 betterButton.onclick = function() {
@@ -602,8 +605,9 @@ for (let button of btnGroup) {
 
 //Keyboard events
 //The switch keyword works sort of like an 'if' statement:
-//Shown two ways:
+//Shown two ways, both commented out to avoid constant console logging.
 
+//switch version:
 //window.addEventListener("keydown", function (e) {
 //     switch(e.code) {
 //        case 'ArrowUp':
@@ -614,19 +618,21 @@ for (let button of btnGroup) {
 //            break
 //     }
 //})
-window.addEventListener("keydown", function (e) {
-     if (e.code == 'ArrowUp') {
-        console.log("Up");
-     } else if (e.code == 'ArrowDown') {
-        console.log("Down");
-     } else if (e.code == 'ArrowLeft') {
-        console.log("Left");
-     } else if (e.code == "ArrowRight") {
-        console.log("Right");
-     } else {
-        console.log("Error!")
-     }
-})
+
+//if statement version:
+//window.addEventListener("keydown", function (e) {
+//     if (e.code == 'ArrowUp') {
+//        console.log("Up");
+//     } else if (e.code == 'ArrowDown') {
+//        console.log("Down");
+//     } else if (e.code == 'ArrowLeft') {
+//        console.log("Left");
+//     } else if (e.code == "ArrowRight") {
+//        console.log("Right");
+//     } else {
+//        console.log("Error!")
+//     }
+//})
 
 
 //Form events
@@ -635,8 +641,34 @@ window.addEventListener("keydown", function (e) {
 //to use a form to change information on the page we're on without trying to access
 //a different url. To do that, we need to prevent the default behavior of the form.
 
+//const firstForm = document.querySelector(".firstForm");
+//firstForm.addEventListener("submit", function(e) {
+//    console.log("SUBMITTED")
+//})
 
+//If you were to watch the logs when submitting, you'd see teh 'SUBMITTED' appear for a nano-second
+//before being redirected to whatever the form action dictates. But if we don't want that redirect,
+//we need to start doing some preventing.
 
+//const firstForm = document.querySelector(".firstForm");
+//firstForm.addEventListener("submit", function(e) {
+//    e.preventDefault();
+//    console.log("SUBMITTED");
+//})
+
+//Now, having prevented the default behavior, the code runs as normal without a redirect.
+//preventDefault() has many other potential uses, but the majority of the time, it's used in this way with forms.
+//Now, we can actually do something with our input value without navigating away and losing said value...
+
+const firstForm = document.querySelector(".firstForm");
+const input = document.querySelector(".firstInput")
+const allInputs = document.querySelector(".inputs")
+firstForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const newInput = document.createElement("li")
+    newInput.innerText = input.value
+    allInputs.insertAdjacentElement('beforeend', newInput)
+})
 
 
 
