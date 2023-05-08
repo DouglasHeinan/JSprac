@@ -602,22 +602,38 @@ for (let button of btnGroup) {
 
 //Keyboard events
 //The switch keyword works sort of like an 'if' statement:
+//Shown two ways:
+
+//window.addEventListener("keydown", function (e) {
+//     switch(e.code) {
+//        case 'ArrowUp':
+//            console.log("UP")
+//            break
+//        case 'ArrowDown':
+//            console.log("DOWN")
+//            break
+//     }
+//})
 window.addEventListener("keydown", function (e) {
-     switch(e.code) {
-        case 'ArrowUp':
-            console.log("UP")
-            break
-        case 'ArrowDown':
-            console.log("DOWN")
-            break
+     if (e.code == 'ArrowUp') {
+        console.log("Up");
+     } else if (e.code == 'ArrowDown') {
+        console.log("Down");
+     } else if (e.code == 'ArrowLeft') {
+        console.log("Left");
+     } else if (e.code == "ArrowRight") {
+        console.log("Right");
+     } else {
+        console.log("Error!")
      }
 })
 
 
-
-
-
-
+//Form events
+//When a form is submitted, it has a default behavior. It wants to use the form action
+//to send the form information to a different url. Sometimes we want
+//to use a form to change information on the page we're on without trying to access
+//a different url. To do that, we need to prevent the default behavior of the form.
 
 
 
