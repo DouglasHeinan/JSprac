@@ -550,11 +550,68 @@ const bestButton = document.querySelector(".bestButton")
 bestButton.addEventListener('click', function() {
     console.log("Best Button Clicked.")
 })
+//Add eventlistener is generally preferred because it allows us to
+//run multiple functions on one event. onclick does not so much.
+
+//Keyword this
+//This function returns a random rgb value.
+function makeRandColor() {
+    r = Math.floor(Math.random() * 256);
+    g = Math.floor(Math.random() * 256);
+    b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`
+}
+//This for-loop makes a button change color when clicked.
+//*******This is commented out because it gets changed later.*******
+//const btnGroup = document.querySelectorAll(".btnGroup button");
+//for (let button of btnGroup) {
+//    button.addEventListener("click", function() {
+//        button.style.backgroundColor = makeRandColor();
+//        button.style.color = makeRandColor();
+//    })
+//}
+//*******************************************
+//This for-loop does the same, but for headers.
+//*******This is commented out because it gets changed later.*******
+//const hdrGroup = document.querySelectorAll(".smHeaders h6");
+//for (let header of hdrGroup) {
+//    header.addEventListener("click", function() {
+//        header.style.backgroundColor = makeRandColor();
+//        header.style.color = makeRandColor();
+//    })
+//}
+//********************************************
+//This works, but it would be nice to be able to use the same function
+//for both headers and buttons. Enter the 'this' keyword.
+function randColorVzTwo() {
+    this.style.backgroundColor = makeRandColor();
+    this.style.color = makeRandColor();
+}
+//This function can replace the inner most piece of our for-loops above...
+const hdrGroup = document.querySelectorAll(".smHeaders h6");
+for (let header of hdrGroup) {
+    header.addEventListener("click", randColorVzTwo)
+}
+const btnGroup = document.querySelectorAll(".btnGroup button");
+for (let button of btnGroup) {
+    button.addEventListener("click", randColorVzTwo)
+}
+//The 'this' keyword takes whatever element it's a method of and applies that
+//to whatever 'this' is doing.
 
 
-
-
-
+//Keyboard events
+//The switch keyword works sort of like an 'if' statement:
+window.addEventListener("keydown", function (e) {
+     switch(e.code) {
+        case 'ArrowUp':
+            console.log("UP")
+            break
+        case 'ArrowDown':
+            console.log("DOWN")
+            break
+     }
+})
 
 
 
