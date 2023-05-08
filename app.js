@@ -671,6 +671,27 @@ firstForm.addEventListener("submit", function(e) {
 })
 
 
+//'change' and 'input'
+//The 'change' keyword performs it's function when some value has been changed AND THEN
+//the field is "blurred", i.e. clicked away from.
+const changeInput = document.querySelector(".changeInput");
+const changeHeader = document.querySelector(".changeHeader");
+changeInput.addEventListener("change", function(e) {
+    changeHeader.innerText = changeInput.value;
+})
+//The input keyword is similar. It triggers the listener whenever the value in the field is changed,
+//not waiting on the blur.
+const inputInput = document.querySelector(".inputInput");
+const inputHeader = document.querySelector(".inputHeader");
+inputInput.addEventListener("input", function(e) {
+    inputHeader.innerText=inputInput.value;
+})
+//A lot of this functionality could be handled with 'keydown'/'keyup', but those events fire
+//when ANY key is pressed (shift, space, alt, etc). change/input only fire when the value
+//in the field changes.
+
+
+
 
 
 
