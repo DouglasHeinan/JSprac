@@ -665,9 +665,10 @@ const input = document.querySelector(".firstInput")
 const allInputs = document.querySelector(".inputs")
 firstForm.addEventListener("submit", function(e) {
     e.preventDefault();
-    const newInput = document.createElement("li")
-    newInput.innerText = input.value
-    allInputs.insertAdjacentElement('beforeend', newInput)
+    const newInput = document.createElement("li");
+    newInput.innerText = input.value;
+    allInputs.insertAdjacentElement('beforeend', newInput);
+    input.value = "";
 })
 
 
@@ -691,8 +692,44 @@ inputInput.addEventListener("input", function(e) {
 //in the field changes.
 
 
+//Event bubbling
+//The bubble div/paragraph/button in the html will demonstrate that when you have an onclick
+//event nested inside another, they all fire. So, by clicking the bubble button, the paragraph
+//and div also fire their events, because the button is nested inside the other two.
+//This chain reaction is called Event Bubbling. To make it stop:
+const bubbleBut = document.querySelector(".bubbleBut");
+bubbleBut.addEventListener("click", function(e) {
+    e.stopPropagation();
+})
+//stopPropagation() keeps the event from bubbling up.
 
 
+//Event Delegation
+//Event delegation attaches a listener to a parent element of the thing causing the event.
+//This is handy most notably in instances where the element in need of event listening
+//may not be created yet. Our firstForm in the html is a perfect example. It adds elements
+//input by the user into a list. If I want to listen for an event, like a click, on one of
+//those list elements, I'll need some event delegation.
+
+//const delegatedContainer = document.querySelector(".inputs");
+//delegatedContainer.addEventListener("click", function(e) {
+//    e.target.remove()
+//})
+
+//We delegate by targeting the event target. The target is the element actually clicked on.
+//It can be seen inside the mouse event object. So, while our code is looking for all
+//events inside the ul, the event target is looking only for the specific target inside
+//the container being clicked.
+//You can add an if statement to make sure you're targeting the element you want.
+
+const delegatedContainer = document.querySelector(".inputs");
+delegatedContainer.addEventListener("click", function(e) {
+    if (e.target.nodeName == 'LI') {
+        e.target.remove()
+    }
+})
+
+//The nodeName is what identifies the element in the dom.
 
 
 

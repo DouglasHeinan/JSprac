@@ -66,6 +66,7 @@
             <input class="changeInput" type="text" placeholder="change">
             <button>Submit</button>
         </form>
+        <br>
         <h5 class="changeHeader">I change when you click away.</h5>
         <br>
         <form>
@@ -73,6 +74,13 @@
             <button>Submit</button>
         </form>
         <h5 class="inputHeader">I change when you enter text.</h5>
+        <br>
+        <div class="bubbleDiv" onclick="console.log('div clicked')">
+            <p class="bubblePara" onclick="console.log('p-tag clicked')">
+                Bubble Paragraph
+                <button class="bubbleBut" onclick="console.log('button clicked')">Bubble Button</button>
+            </p>
+        </div>
 
         <script src="app.js"></script>
     </body>
