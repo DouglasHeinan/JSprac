@@ -10,3 +10,13 @@
     width: 15em;
     height: 15em;
 }
+.centered {
+    text-align: center;
+}
+
+.scoreKeeperInner {
+}
+
+.onlyImage {
+    width: 33%;
+}
