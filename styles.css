@@ -10,13 +10,37 @@
     width: 15em;
     height: 15em;
 }
-.centered {
+.scorekeeper {
     text-align: center;
-}
-
-.scoreKeeperInner {
+    width: 50%;
+    margin: 0 auto;
 }
 
 .onlyImage {
-    width: 33%;
+    width: 100%;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-around;
+}
+
+.team, .score {
+    font-size: 2em;
+}
+
+.home, .away {
+    height: 5em;
+}
+
+.home .team {
+    color: red;
+}
+
+.away .team {
+    color: green;
+}
+
+.home h5, .away h5 {
+    margin: 0.5em 0;
 }
