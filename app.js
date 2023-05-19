@@ -732,11 +732,28 @@ delegatedContainer.addEventListener("click", function(e) {
 //The nodeName is what identifies the element in the dom.
 
 
-fetch("https://swapi.dev/api/people/1/")
+//        res.json().then(data => console.log("JSON DONE", data))
+
+
+//fetch("https://swapi.dev/api/people/1/")
+//    .then((res) => {
+//        console.log("RESOLVED");
+//        return res.json()
+//    })
+//    .then((data) => {
+//        console.log("WORKS!")
+//        console.log(data);
+//    })
+//    .catch((e) => {
+//        console.log("ERROR", e);
+//    })
+
+
+axios.get("https://swapi.dev/api/people/1/")
     .then((res) => {
-        console.log("RESOLVED", res);
+        console.log("RESPONSE ", res);
     })
-    .catch((e) => {
-        consoloe.log("ERROR", e);
+    .catch(e => {
+        console.log("ERROR ", e);
     })
 
