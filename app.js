@@ -763,22 +763,30 @@ axios.get("https://swapi.dev/api/people/1/")
 //completion or failure of an asynchronous operation.
 const fakeRequestPromise = (url) => {
     return new Promise((resolve, reject) => {
-        const delay = Math.floor(Math.random() * (4500)) + 500;
+        const delay = Math.floor(Math.random() * (5500)) + 500;
         setTimeout(() => {
             if (delay > 4000) {
                 reject("Connection Timeout")
+                print(delay)
             } else {
                 resolve("Here is your fake data...")
+                print(delay)
             }
         }, delay)
     })
 }
 
 
-const request = fakeRequestPromise('fakewebsite.com/api/fakething');
-request
+fakeRequestPromise('fakewebsite.com/api/fakething')
     .then(() => {
         console.log(("IT WORKED, MAN"))
+        fakeRequestPromise('fakewebsite2.com/api/fakething')
+            .then(() => {
+                console.log("THE SECOND ONE WORKED")
+            })
+            .catch(() => {
+                console.log("ICK PART 2")
+            })
     })
     .catch(() => {
         console.log("ICK")
