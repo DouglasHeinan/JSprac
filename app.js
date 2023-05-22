@@ -767,27 +767,44 @@ const fakeRequestPromise = (url) => {
         setTimeout(() => {
             if (delay > 4000) {
                 reject("Connection Timeout")
-                print(delay)
             } else {
                 resolve("Here is your fake data...")
-                print(delay)
             }
         }, delay)
     })
 }
 
+//You can then call the above function with chained 'thens' and 'catches' all nested together.
 
-fakeRequestPromise('fakewebsite.com/api/fakething')
+//fakeRequestPromise('fakewebsite.com/api/fakething')
+//    .then(() => {
+//        console.log(("IT WORKED, MAN"))
+//        fakeRequestPromise('fakewebsite2.com/api/fakething')
+//            .then(() => {
+//                console.log("THE SECOND ONE WORKED")
+//            })
+//            .catch(() => {
+//                console.log("ICK PART 2")
+//            })
+//    })
+//    .catch(() => {
+//        console.log("ICK")
+//    })
+
+//But you'll probably be better served RETURNING thenext callback in the line and chaining 'thens' to that.
+//And we only need one 'catch' this way.
+fakeRequestPromise("fakewebsite.com/api/fakething/page1")
     .then(() => {
-        console.log(("IT WORKED, MAN"))
-        fakeRequestPromise('fakewebsite2.com/api/fakething')
-            .then(() => {
-                console.log("THE SECOND ONE WORKED")
-            })
-            .catch(() => {
-                console.log("ICK PART 2")
-            })
+        console.log("One worked! (page1)")
+        return fakeRequestPromise("fakewebsite.com/api/fakething/page2")
+    })
+    .then(() => {
+        console.log("Two worked! (page2)")
+        return fakeRequestPromise("fakewebsite.com/api/fakething/page3")
+    })
+    .then(() => {
+        console.log("Three worked! (page3)")
     })
     .catch(() => {
-        console.log("ICK")
+        console.log("WHOOPS!")
     })
