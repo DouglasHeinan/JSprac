@@ -732,7 +732,6 @@ delegatedContainer.addEventListener("click", function(e) {
 //The nodeName is what identifies the element in the dom.
 
 
-//        res.json().then(data => console.log("JSON DONE", data))
 
 
 //fetch("https://swapi.dev/api/people/1/")
@@ -758,8 +757,10 @@ axios.get("https://swapi.dev/api/people/1/")
     });
 
 
-//promises:
-// for accessing apis...
+//Promises:
+// for accessing apis.
+//Here is a function that utilizes the Promise object. It's an object that represents the eventual
+//completion or failure of an asynchronous operation.
 const fakeRequestPromise = (url) => {
     return new Promise((resolve, reject) => {
         const delay = Math.floor(Math.random() * (4500)) + 500;
@@ -780,5 +781,5 @@ request
         console.log(("IT WORKED, MAN"))
     })
     .catch(() => {
-        consoel.log("ICK")
+        console.log("ICK")
     })
