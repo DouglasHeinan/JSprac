@@ -757,4 +757,28 @@ axios.get("https://swapi.dev/api/people/1/")
         console.log("ERROR ", e);
     });
 
-Is this working?//
+
+//promises:
+// for accessing apis...
+const fakeRequestPromise = (url) => {
+    return new Promise((resolve, reject) => {
+        const delay = Math.floor(Math.random() * (4500)) + 500;
+        setTimeout(() => {
+            if (delay > 4000) {
+                reject("Connection Timeout")
+            } else {
+                resolve("Here is your fake data...")
+            }
+        }, delay)
+    })
+}
+
+
+const request = fakeRequestPromise('fakewebsite.com/api/fakething');
+request
+    .then(() => {
+        console.log(("IT WORKED, MAN"))
+    })
+    .catch(() => {
+        consoel.log("ICK")
+    })
