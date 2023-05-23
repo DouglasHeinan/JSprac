@@ -826,9 +826,9 @@ const fakeRequestFunc = (url) => {
         value = Math.floor(Math.random() * 10) + 1;
         setTimeout(() => {
             if (value > 3) {
-                resolve();
+                resolve("Here's your fake data.");
             } else {
-                reject()
+                reject("Data request failed.")
             }
         }, 1000)
     })
@@ -837,13 +837,34 @@ const fakeRequestFunc = (url) => {
 //We're now calling 'reject()' about 30% of the time.
 //Then we'll call our function again after initializing the funciton...
 
-fakeRequestFunc("/fake/url/1")
-    .then(() => {
-        console.log("Function worked 1");
+//fakeRequestFunc("/fake/url/1")
+//    .then((data) => {
+//        console.log("Function worked:", data);
+//    })
+//    .catch((err) => {
+//        console.log("Awe... ", err)
+//    })
+
+//So now, adding in our old friend the implicit return, we can do this:
+const delayedColorChange = (color, delay) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            document.body.style.backgroundColor = color;
+            resolve()
+        }, delay)
     })
-    .catch(() => {
-        console.log("Awe... Function failed!")
-    })
+}
+
+delayedColorChange('black', 1000)
+    .then(() => delayedColorChange('gray', 1000))
+    .then(() => delayedColorChange('red', 1000))
+    .then(() => delayedColorChange('orange', 1000))
+    .then(() => delayedColorChange('yellow', 1000))
+    .then(() => delayedColorChange('green', 1000))
+    .then(() => delayedColorChange('blue', 1000))
+    .then(() => delayedColorChange('indigo', 1000))
+    .then(() => delayedColorChange('violet', 1000))
+    .then(() => delayedColorChange('white', 1000))
 
 
 //fetch("https://swapi.dev/api/people/1/")
