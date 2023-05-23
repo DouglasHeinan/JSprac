@@ -794,8 +794,9 @@ const fakeRequestPromise = (url) => {
 //But you'll probably be better served RETURNING thenext callback in the line and chaining 'thens' to that.
 //And we only need one 'catch' this way.
 fakeRequestPromise("fakewebsite.com/api/fakething/page1")
-    .then(() => {
+    .then((data) => {
         console.log("One worked! (page1)")
+        console.log(data)
         return fakeRequestPromise("fakewebsite.com/api/fakething/page2")
     })
     .then(() => {
