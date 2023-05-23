@@ -732,31 +732,6 @@ delegatedContainer.addEventListener("click", function(e) {
 //The nodeName is what identifies the element in the dom.
 
 
-
-
-//fetch("https://swapi.dev/api/people/1/")
-//    .then((res) => {
-//        console.log("RESOLVED");
-//        return res.json()
-//    })
-//    .then((data) => {
-//        console.log("WORKS!")
-//        console.log(data);
-//    })
-//    .catch((e) => {
-//        console.log("ERROR", e);
-//    })
-
-
-axios.get("https://swapi.dev/api/people/1/")
-    .then((res) => {
-        console.log("RESPONSE ", res);
-    })
-    .catch(e => {
-        console.log("ERROR ", e);
-    });
-
-
 //Promises:
 // for accessing apis.
 //Here is a function that utilizes the Promise object. It's an object that represents the eventual
@@ -793,19 +768,102 @@ const fakeRequestPromise = (url) => {
 
 //But you'll probably be better served RETURNING thenext callback in the line and chaining 'thens' to that.
 //And we only need one 'catch' this way.
-fakeRequestPromise("fakewebsite.com/api/fakething/page1")
-    .then((data) => {
-        console.log("One worked! (page1)")
-        console.log(data)
-        return fakeRequestPromise("fakewebsite.com/api/fakething/page2")
+
+//fakeRequestPromise("fakewebsite.com/api/fakething/page1")
+//    .then((data) => {
+//        console.log("One worked! (page1)")
+//        console.log(data)
+//        return fakeRequestPromise("fakewebsite.com/api/fakething/page2")
+//    })
+//    .then(() => {
+//        console.log("Two worked! (page2)")
+//        return fakeRequestPromise("fakewebsite.com/api/fakething/page3")
+//    })
+//    .then(() => {
+//        console.log("Three worked! (page3)")
+//    })
+//    .catch(() => {
+//        console.log("WHOOPS!")
+//    })
+
+
+//Making new promises:
+//We've already made one, but let's dig into what it's made of.
+//It always starts with 'new' and takes two arguments we usually call resolve and reject.
+
+//new Promise((resolve, reject) => {
+//    reject();
+//})
+
+//The above function is totally valid. You're creating a new Promise and giving it a status of reject.
+//You could even leave the Promise function blank and it's status will forever remain 'pending'.
+//Usually, a Pormise will be included/returned as part of a request func:
+
+//const fakeRequestFunc = (url) => {
+//    return new Promise((resolve, reject) => {
+//        setTimeout(() => {
+//            resolve();
+//        }, 1000)
+//    })
+//}
+
+//The above function creates a new promise and, after one second, calls 'resolve' as its state.
+//So we can now call that function and apply our '.then'/'.catch':
+
+//fakeRequestFunc("/fake/url/1")
+//    .then(() => {
+//        console.log("Function worked 1");
+//    })
+//    .catch(() => {
+//        console.log("Awe... Function failed!")
+//    })
+
+//Of course, as written, our function needs no catch since there's no possible fail state.
+//Let's make a minor modification to our function. Let's give it a possible fail state:
+
+const fakeRequestFunc = (url) => {
+    return new Promise((resolve, reject) => {
+        value = Math.floor(Math.random() * 10) + 1;
+        setTimeout(() => {
+            if (value > 3) {
+                resolve();
+            } else {
+                reject()
+            }
+        }, 1000)
     })
+}
+
+//We're now calling 'reject()' about 30% of the time.
+//Then we'll call our function again after initializing the funciton...
+
+fakeRequestFunc("/fake/url/1")
     .then(() => {
-        console.log("Two worked! (page2)")
-        return fakeRequestPromise("fakewebsite.com/api/fakething/page3")
-    })
-    .then(() => {
-        console.log("Three worked! (page3)")
+        console.log("Function worked 1");
     })
     .catch(() => {
-        console.log("WHOOPS!")
+        console.log("Awe... Function failed!")
     })
+
+
+//fetch("https://swapi.dev/api/people/1/")
+//    .then((res) => {
+//        console.log("RESOLVED");
+//        return res.json()
+//    })
+//    .then((data) => {
+//        console.log("WORKS!")
+//        console.log(data);
+//    })
+//    .catch((e) => {
+//        console.log("ERROR", e);
+//    })
+
+
+axios.get("https://swapi.dev/api/people/1/")
+    .then((res) => {
+        console.log("RESPONSE ", res);
+    })
+    .catch(e => {
+        console.log("ERROR ", e);
+    });
