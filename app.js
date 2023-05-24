@@ -867,6 +867,53 @@ delayedColorChange('black', 1000)
     .then(() => delayedColorChange('white', 1000))
 
 
+console.log("")
+//Usually we don't actually work directly with Promise creation in this way.
+//We're mostly going to let async functions do this work for us.
+//The async keyword is used to declare a function as asynchronous. Asynchronous functions always
+//return a Promise automatically.
+const justPromise = async () => {}
+//If you call this function in the console, it'll return a promise.
+//If the async function returns a value, the Promise will be fulfilled with that value.
+const sing = async () => {
+    return "LALALALALALA"
+}
+//Calling this function in console returns a Promise, only now it is fulfilled
+//with the returned value. But some promises get rejected...
+const badPromise = async () => {
+    fuiojdsafjoa;
+}
+const brokenPromise = async () => {
+    throw new Error("You should keep your promises!")
+}
+//Calling either of these will result in an error. The first is just a syntax error.
+//The second is an error we created with the 'throw' keyword. Both still return a Promise,
+//but its state will be 'rejected' and it's result, in the case of the thrown error, will
+//be whatever value we gave to the error object.
+const promiseCantKeep = async () => {
+    throw "This promise was broken."
+    return "What a good promise keeper you are!"
+}
+//This async function is ready to be called. It will get rejected
+//(the 'throw' happens before the return, so the return value will never run),
+//but it now has behavior for either rejection or resolution.
+promiseCantKeep()
+    .then(data => {
+        console.log("Promise resolved with:", data)
+    })
+    .catch(err => {
+        console.log("Promise rejected with", err)
+    })
+//So we can put this all together:
+const login = async (username, password) => {
+    if (!username || !password) throw "Missing Credentials"
+    if (password != "bpPlatty") throw "Incorrect Password"
+    return "Username and password accepted"
+}
+
+
+
+
 //fetch("https://swapi.dev/api/people/1/")
 //    .then((res) => {
 //        console.log("RESOLVED");
@@ -881,10 +928,13 @@ delayedColorChange('black', 1000)
 //    })
 
 
-axios.get("https://swapi.dev/api/people/1/")
-    .then((res) => {
-        console.log("RESPONSE ", res);
-    })
-    .catch(e => {
-        console.log("ERROR ", e);
-    });
+
+
+
+//axios.get("https://swapi.dev/api/people/1/")
+//    .then((res) => {
+//        console.log("RESPONSE ", res);
+//    })
+//    .catch(e => {
+//        console.log("ERROR ", e);
+//    });
