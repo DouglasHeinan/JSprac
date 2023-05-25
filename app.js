@@ -910,8 +910,12 @@ const login = async (username, password) => {
     if (password != "bpPlatty") throw "Incorrect Password"
     return "Username and password accepted"
 }
+//And now we can call the login function with whatever we want as parameters and it'll
+//reject or resolve based on the arguments.
 
 
+
+//After this, we use the await keyword.
 
 
 //fetch("https://swapi.dev/api/people/1/")
